@@ -1,0 +1,59 @@
+# Ansible specific
+*.retry
+
+# Ansible Vault files
+*.vault
+vault.yml
+*.vault.yml
+secrets.yml
+*.secrets.yml
+
+# Dynamic Inventory files
+*.ini
+
+# Environment specific settings
+env_vars/
+*.env
+.env.*
+
+# SSH Keys
+*.pem
+*.key
+id_rsa
+id_ecdsa
+id_ed25519
+.ssh/
+
+# System Files
+*.swp
+*~
+.DS_Store
+
+# User-specific files
+*.vault_pass
+ansible.cfg
+hosts
+inventory.yml
+
+# Temporary files
+tmp/
+*.tmp
+*.bak
+
+# Python virtualenv
+venv/
+*.pyc
+__pycache__/
+*.pyo
+
+# Role dependencies managed by ansible-galaxy or other tools
+roles/*
+!roles/.keep
+/roles/requirements.yml
+
+# Collections managed by ansible-galaxy
+/collections/
+
+# Files created by ansible-test
+/tests/output/
+
