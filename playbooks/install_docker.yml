@@ -1,6 +1,6 @@
 ---
 
-- hosts: ubuntuServers
+- hosts: ubuntuservers
   become: true
   vars:
     arch_mapping:
