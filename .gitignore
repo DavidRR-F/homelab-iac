@@ -1,3 +1,5 @@
+.env
+
 # Ansible specific
 *.retry
 
@@ -57,3 +59,30 @@ roles/*
 # Files created by ansible-test
 /tests/output/
 
+# Packer
+packer_cache/
+*.pkvars.hcl
+*.pkr.hcl
+*.box
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+*.tfvars
+*.tfplan
+.terraform.lock.hcl
+# Ignore override files as they are usually used for local provision testing
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore sensitive data
+*.pem
+*.key
+# Exclude any secret files that might be present
+**/secrets/
