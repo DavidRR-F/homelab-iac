@@ -14,8 +14,8 @@ pipeline {
         )
     }
     environment {
-        PACKER_BASE_DIR = 'packer/base'
-        PACKER_EXTEND_DIR = 'packer/extend'
+        PACKER_BASE_DIR = 'base'
+        PACKER_EXTEND_DIR = 'custom'
     }
     stages {
         stage('Check Changes in Packer Base Directory') {
@@ -144,8 +144,6 @@ pipeline {
                 }
             }
         }
-       // Upload Images to ProxMox 
-      // ToDo: Add Terraform and Ansible Stages
     }
 }
 
