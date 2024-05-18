@@ -62,7 +62,7 @@ roles/*
 # Packer
 packer_cache/
 *.pkvars.hcl
-*.pkr.hcl
+#*.pkr.hcl
 *.box
 
 # Terraform
