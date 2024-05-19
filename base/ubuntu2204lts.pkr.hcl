@@ -1,3 +1,12 @@
+packer {
+  required_plugins {
+    qemu = {
+      version = ">= 1.1.0"
+      source  = "github.com/hashicorp/qemu"
+    }
+  }
+}
+
 variable "temp_password" {
   type    = string
   default = ""
@@ -8,13 +17,20 @@ variable "iso_checksum" {
   default = ""
 }
 
+variable "key_file" {
+  type    = string 
+  default = ""
+}
+
 source "qemu" "ubuntu" {
-  iso_url          = "http://releases.ubuntu.com/22.04/ubuntu-22.04-live-server-amd64.iso"
-  iso_checksum     = var.iso_checksum
-  ssh_username     = "admin"
-  ssh_password     = var.temp_password
-  ssh_timeout      = "30m"
-  shutdown_command = "echo '${var.temp_password}' | sudo -S shutdown -P now"
+  iso_url               = "http://releases.ubuntu.com/22.04/ubuntu-22.04.4-live-server-amd64.iso"
+  iso_checksum          = var.iso_checksum
+  iso_checksum_type     = "sha256"
+  iso_download_timeout  = "60m"
+  ssh_username          = "admin"
+  ssh_password          = var.temp_password
+  ssh_timeout           = "30m"
+  shutdown_command      = "echo '${var.temp_password}' | sudo -S shutdown -P now"
 }
 
 build {
@@ -23,7 +39,7 @@ build {
   ]
 
   provisioner "file" {
-    source      = "ansible.pub"
+    source      = var.key_file
     destination = "/tmp/ansible.pub"
   }
 
